@@ -1,0 +1,57 @@
+﻿@model bool
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Employee/_LayoutLogin.cshtml";
+}
+
+<section class="w3l-forms-main-61">
+    <div class="form-inner">
+        <div class="wrapper">
+            <div class="d-grid top-form">
+                <div class="logo">
+                    <a class="brand-logo" href="Login">
+                        <span>
+                            <span class="fa fa-viadeo"
+                                  aria-hidden="true"></span> Банковская система
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="form-bg-blur">
+                <div class="form-61">
+                    <h4 class="form-head">Авторизация</h4>
+                    @{if (Model == true)
+                        {
+                            <h4 align="center">Данные неверные!</h4>
+                        }
+                    }
+                    <form action="Verify" method="post">
+                        <div class="">
+                            <p class="text-head">Имя пользователя</p>
+                            <input type="text" name="EmployeeLogin" class="input" required />
+                        </div>
+                        <div class="">
+                            <p class="text-head">Пароль</p>
+                            <input type="password" name="EmployeePassword" class="input" required />
+                        </div>
+                        <button type="submit" class="signinbutton btn">Войти</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <!--
+            <div class="go-to-home text-center">
+                <p>Want to Create account? <a class="btn" href="signup.html"> Signup </a></p>
+            </div> -->
+        </div>
+        <div class="copyright text-center">
+            <div class="wrapper">
+                <p class="copy-footer-29">
+                    © 2020 Игнатик</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+

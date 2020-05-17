@@ -1,0 +1,75 @@
+﻿@model IEnumerable<bank.Data.Models.DepositType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")|
+    @Html.ActionLink("Фильтр: по Названию", "NameFilter")|
+    @Html.ActionLink("Фильтр: по Процентной ставке", "PercentFilter")|
+    @Html.ActionLink("Фильтр: по Периоду", "PeriodFilter")|
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>id</h6>
+            </th>
+            <th>
+                <h6>Название</h6>
+            </th>
+            <th>
+                <h6>Минимальная сумма</h6>
+            </th>
+            <th>
+                <h6>Максимальная сумма</h6>
+            </th>
+            <th>
+                <h6>Период (мес.)</h6>
+            </th>
+            <th>
+                <h6>Капитализация (в год)</h6>
+            </th>
+            <th>
+                <h6>Ставка процента</h6>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.typeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maxMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capitalization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.percent)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

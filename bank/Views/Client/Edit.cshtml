@@ -1,0 +1,49 @@
+﻿@model bank.Data.Models.Client
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Редактировать</h1>
+
+<h4>Клиент</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                
+                <label asp-for="fullname" class="control-label">ФИО</label>
+                @Html.EditorFor(model => model.fullname)
+                <span asp-validation-for="fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="passport" class="control-label">Номер паспорта</label>
+                @Html.EditorFor(model => model.passport)
+                <span asp-validation-for="passport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="phoneNumber" class="control-label">Номер телефона</label>
+                @Html.EditorFor(model => model.phoneNumber)
+                <span asp-validation-for="phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="adress" class="control-label">Адрес</label>
+                @Html.EditorFor(model => model.adress)
+                <span asp-validation-for="adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

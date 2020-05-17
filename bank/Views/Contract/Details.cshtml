@@ -1,0 +1,43 @@
+﻿@model bank.Data.Models.Contract
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Подробная информация</h1>
+
+<div>
+    <h4>Контракт</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <h6>id</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>Дата</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dateOfSigning)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>id клиента</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.clientID)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>id сотрудника</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.employeeID)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Назад", "Index")
+</div>

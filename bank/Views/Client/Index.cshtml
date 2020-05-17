@@ -1,0 +1,75 @@
+﻿@model IEnumerable<bank.Data.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")|
+    @Html.ActionLink("Фильтр: по ФИО", "FIOFilter")
+</p>
+<h5>@ViewBag.Message</h5>
+<p>
+    <form asp-action="Index" method="post">
+        <div class="form-group">
+            <label asp-for="EmployeePhoto" class="control-label">Поиск по ФИО:</label>
+            <input type="text" name="fullname" class="input" required />
+            <span asp-validation-for="fullname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Поиск" class="btn btn-primary" />
+        </div>
+    </form>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>id</h6>
+            </th>
+            <th>
+                <h6>ФИО</h6>
+            </th>
+            <th>
+                <h6>Паспорт</h6>
+            </th>
+            <th>
+                <h6>Телефон</h6>
+            </th>
+            <th>
+                <h6>Адрес</h6>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.passport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adress)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Подробно", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

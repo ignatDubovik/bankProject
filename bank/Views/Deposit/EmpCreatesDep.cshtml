@@ -1,0 +1,56 @@
+﻿@model bank.Data.Models.Deposit
+
+@{
+    ViewData["Title"] = "EmpCreatesDep";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>Добавить</h1>
+
+<h4>Вклад</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="EmpCreatesDep" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="initialMoney" class="control-label">Начальная сумма</label>
+                <input type="number" name="initialMoney" class="input" required />
+                <span asp-validation-for="initialMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="dateOfOpening" class="control-label">Дата открытия</label>
+                <input type="date" name="dateOfOpening" class="input" required />
+                <span asp-validation-for="dateOfOpening" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="depositTypeID" class="control-label">Тип вклада</label>
+                <input type="number" name="depositTypeID" class="input" required />
+                <span asp-validation-for="depositTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="contractNumber" class="control-label">Номер контракта</label>
+                <input type="number" name="contractNumber" class="input" required />
+                <span asp-validation-for="contractNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="clientID" class="control-label">ID клиента</label>
+                <input type="number" name="clientID" class="input" required />
+                <span asp-validation-for="clientID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "EmpViewsDeps")
+</div>

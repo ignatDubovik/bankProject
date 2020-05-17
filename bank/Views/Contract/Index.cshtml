@@ -1,0 +1,56 @@
+﻿@model IEnumerable<bank.Data.Models.Contract>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Контракты</h1>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")|
+    @Html.ActionLink("Фильтр: по Клиенту", "ClientFilter")|
+    @Html.ActionLink("Фильтр: по Сотруднику", "EmployeeFilter")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>id</h6>
+            </th>
+            <th>
+                <h6>Дата</h6>
+            </th>
+            <th>
+                <h6>id клиента</h6>
+            </th>
+            <th>
+                <h6>id сотрудника</h6>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfSigning)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeID)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

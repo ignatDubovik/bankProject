@@ -1,0 +1,62 @@
+﻿@model bank.Data.Models.DepositType
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Добавить</h1>
+
+<h4>Тип вклада</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="typeName" class="control-label">Название</label>
+                <input type="text" name="typeName" class="input" required />
+                <span asp-validation-for="typeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="minMoney" class="control-label">Минимальная сумма</label>
+                <input type="number" name="minMoney" class="input" required />
+                <span asp-validation-for="minMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="maxMoney" class="control-label">Максимальная сумма</label>
+                <input type="number" name="maxMoney" class="input" required />
+                <span asp-validation-for="maxMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="period" class="control-label">Период вклада</label>
+                <input type="number" name="period" class="input" required />
+                <span asp-validation-for="period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="capitalization" class="control-label">Капитализация</label>
+                <input type="number" name="capitalization" class="input" required />
+                <span asp-validation-for="capitalization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="percent" class="control-label">Ставка процента</label>
+                <input type="number" name="percent" class="input" required />
+                <span asp-validation-for="percent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

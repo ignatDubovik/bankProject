@@ -1,0 +1,51 @@
+﻿@model bank.Data.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Редактировать</h1>
+
+<h4>Сотрудник</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="EmployeeLogin" class="control-label">Логин</label>
+                @Html.EditorFor(model => model.EmployeeLogin)
+                <span asp-validation-for="EmployeeLogin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeePassword" class="control-label">Пароль</label>
+                @Html.EditorFor(model => model.EmployeePassword)
+                <span asp-validation-for="EmployeePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeeFullName" class="control-label">ФИО</label>
+                @Html.EditorFor(model => model.EmployeeFullName)
+                <span asp-validation-for="EmployeeFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeePhoto" class="control-label">Фото</label>
+                @Html.EditorFor(model => model.EmployeePhoto)
+                <span asp-validation-for="EmployeePhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model bank.Data.Models.Contract
+
+@{
+    ViewData["Title"] = "CreateContractEmployee";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>Добавить</h1>
+
+<h4>Контракт</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="CreateContractEmployee" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="dateOfSigning" class="control-label">Дата</label>
+                <input type="date" name="dateOfSigning" class="input" required />
+                <span asp-validation-for="dateOfSigning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="clientID" class="control-label">ID клиента</label>
+                <input type="number" name="clientID" class="input" required />
+                <span asp-validation-for="clientID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "EmployeeViewsContract")
+</div>

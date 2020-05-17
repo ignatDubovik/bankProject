@@ -1,0 +1,48 @@
+﻿@model bank.Data.Models.Credit
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>Расчет кредита</h1>
+
+<h4>Расчет кредита</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="Index" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="creditSum" class="control-label">Сумма кредита</label>
+                @Html.EditorFor(model => model.creditSum)
+                <span asp-validation-for="creditSum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="creditPeriod" class="control-label">Период (в годах)</label>
+                @Html.EditorFor(model => model.creditPeriod)
+                <span asp-validation-for="creditPeriod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="percent" class="control-label">Ставка процента</label>
+                @Html.EditorFor(model => model.percent)
+                <span asp-validation-for="percent" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="isDiff" class="control-label">Диффер. платежи</label>
+                @Html.EditorFor(model => model.isDiff)
+                <span asp-validation-for="isDiff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="payout" class="control-label">Выплаты</label>
+                @Html.DisplayFor(model => model.payout)
+                <span asp-validation-for="payout" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Посчитать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

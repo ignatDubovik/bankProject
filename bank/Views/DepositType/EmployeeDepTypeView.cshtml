@@ -1,0 +1,69 @@
+﻿@model IEnumerable<bank.Data.Models.DepositType>
+
+@{
+    ViewData["Title"] = "EmployeeDepTypeView";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>Типы вкладов</h1>
+
+<p>
+    @Html.ActionLink("Фильтр: по Названию", "NameFilter1")|
+    @Html.ActionLink("Фильтр: по Процентной ставке", "PercentFilter1")|
+    @Html.ActionLink("Фильтр: по Периоду", "PeriodFilter1")|
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>id</h6>
+            </th>
+            <th>
+                <h6>Название</h6>
+            </th>
+            <th>
+                <h6>Минимальная сумма</h6>
+            </th>
+            <th>
+                <h6>Максимальная сумма</h6>
+            </th>
+            <th>
+                <h6>Период (мес.)</h6>
+            </th>
+            <th>
+                <h6>Капитализация (в год)</h6>
+            </th>
+            <th>
+                <h6>Ставка процента</h6>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.typeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maxMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capitalization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.percent)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

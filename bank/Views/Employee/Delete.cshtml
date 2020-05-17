@@ -1,0 +1,57 @@
+﻿@model bank.Data.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены, что хотите удалить сотрудника?</h3>
+<div>
+    <h4>Сотрудник</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <h6>id</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>Логин</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeLogin)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>Пароль</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeePassword)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>ФИО</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeFullName)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>Фото</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeePhoto)
+        </dd>
+        <dt class = "col-sm-2">
+            <h6>Администрирование</h6>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.isAdmin)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" method="post">
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        @Html.ActionLink("Назад", "Index")
+    </form>
+</div>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<bank.Data.Models.Deposit>
+
+@{
+    ViewData["Title"] = "EmpViewsDeps";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>Вклады</h1>
+
+<p>
+    @Html.ActionLink("Добавить", "EmpCreatesDep")|
+    @Html.ActionLink("Фильтр: по Типу", "TypeFilter1")|
+    @Html.ActionLink("Фильтр: по Дате открытия", "DateFilter1")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>id</h6>
+            </th>
+            <th>
+                <h6>Начальная сумма</h6>
+            </th>
+            <th>
+                <h6>Дата открытия</h6>
+            </th>
+            <th>
+                <h6>Планируемая сумма</h6>
+            </th>
+            <th>
+                <h6>id типа</h6>
+            </th>
+            <th>
+                <h6>id контракта</h6>
+            </th>
+            <th>
+                <h6>id клиента</h6>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.initialMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfOpening)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plannedFinalAmountOfMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.depositTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contractNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clientID)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

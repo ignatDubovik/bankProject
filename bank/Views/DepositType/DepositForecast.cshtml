@@ -1,0 +1,122 @@
+﻿@model bank.Data.Models.DepositType
+
+@{
+    ViewData["Title"] = "DepositForecast";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<script type="text/javascript"
+        src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<h1>Спрогнозировать вклад</h1>
+<hr />
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="DepositForecast" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="minMoney" class="control-label">Начальная сумма: </label>
+                <input type="number" name="minMoney" class="input" required />
+                <span asp-validation-for="minMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="period" class="control-label">Период:</label>
+                <input type="number" name="period" class="input" required />
+                <span asp-validation-for="period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="capitalization" class="control-label">Капитализация:</label>
+                <input type="number" name="capitalization" class="input" required />
+                <span asp-validation-for="capitalization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="percent" class="control-label">Ставка процента:</label>
+                <input type="number" name="percent" class="input" required />
+                <span asp-validation-for="percent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Прогноз" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div id="content" align="center">
+    <canvas id="myChart" width="628" height="400"></canvas>
+</div>
+
+
+
+<!-- Подключаем JQuery и Chart.js -->
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+
+<script type="text/javascript">
+    //Готовим диаграмму
+    function Diagram() {
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [], //Подписи оси x
+                datasets: [
+                    {
+                        label: 'Рост суммы вклада', //Метка
+                        data: [], //Данные
+                        borderColor: 'blue', //Цвет
+                        borderWidth: 2, //Толщина линии
+                        fill: false //Не заполнять под графиком
+                    }
+                    //Можно добавить другие графики
+                ]
+            },
+            options: {
+                responsive: false, //Вписывать в размер canvas
+                scales: {
+                    xAxes: [{
+                        display: true
+                    }],
+                    yAxes: [{
+                        display: true
+                    }]
+                }
+            }
+        });
+        //Заполняем данными
+        var period = @Model.period;
+        var percent = @Model.percent;
+        var capitalization = @Model.capitalization;
+        var minMoney = @Model.minMoney;
+            for (var x = 0; x <= period; x += 0.1) {
+                myChart.data.labels.push('' + x.toFixed(2));
+                myChart.data.datasets[0].data.push(f(x).toFixed(2));
+            }
+            //Обновляем
+            myChart.update();
+
+            function f(x) { //Вычисление нужной функции
+                var maxMoney = 0;
+                maxMoney = 1 + (percent) / (100 *capitalization);
+                maxMoney = Math.pow(maxMoney, ((x*capitalization) / 12));
+                maxMoney *=minMoney;
+                return maxMoney;
+            }
+        }
+
+    //Ставим загрузку диаграммы на событие загрузки страницы
+    window.addEventListener("load", Diagram);
+</script>
+<noscript>
+    <div align="center">
+        Извините, для работы приложения нужен включённый Javascript
+    </div>
+</noscript>

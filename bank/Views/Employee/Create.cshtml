@@ -1,0 +1,49 @@
+﻿@model bank.Data.Models.Employee 
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Добавить</h1>
+
+<h4>Сотрудник</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h5>@ViewBag.Message</h5>
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <label asp-for="EmployeeLogin" class="control-label">Логин</label>
+                <input type="text" name="EmployeeLogin" class="input" required />
+                <span asp-validation-for="EmployeeLogin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeePassword" class="control-label">Пароль</label>
+                <input type="text" name="EmployeePassword" class="input" required />
+                <span asp-validation-for="EmployeePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeeFullName" class="control-label">ФИО</label>
+                <input type="text" name="EmployeeFullName" class="input" required />
+                <span asp-validation-for="EmployeeFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="EmployeePhoto" class="control-label">Фото:</label>
+                <input type="text" name="EmployeePhoto" class="input" required />
+                <span asp-validation-for="EmployeePhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
